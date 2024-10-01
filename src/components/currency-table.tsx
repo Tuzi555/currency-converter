@@ -10,71 +10,85 @@ export function CurrencyTable() {
 
     return (
         <TableContainer>
-            <Title>CZK Exchange rates</Title>
+            <h1>CZK Exchange rates</h1>
             <Table>
-                <Caption>
+                <caption>
                     Exchange rates according to CNB for today (here will be the
                     current date)
-                </Caption>
+                </caption>
                 <thead>
-                    <Tr>
+                    <tr>
                         <th scope="col">Currency</th>
                         <th scope="col">Rate</th>
-                    </Tr>
+                    </tr>
                 </thead>
-                <Tbody>
+                <tbody>
                     {rates.map((r) => (
-                        <Tr>
-                            <th scope="row">{r.currency}</th>
+                        <tr>
+                            <td>{r.currency}</td>
                             <td>{r.rate}</td>
-                        </Tr>
+                        </tr>
                     ))}
-                </Tbody>
+                </tbody>
             </Table>
         </TableContainer>
     );
 }
 
+const borderColor = '#a1a1aa';
+
 const TableContainer = styled.div`
-    border: 1px solid #e4e4e7;
+    border: 1px solid ${borderColor};
     border-radius: 0.75rem;
     padding: 0 1rem;
     margin-top: 3rem;
+    width: 640px;
+
+    h1 {
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+
+    @media only screen and (max-width: 768px) {
+        width: 80%;
+    }
+
+    @media only screen and (max-width: 640px) {
+        width: 100%;
+    }
 `;
 
 const Table = styled.table`
     border-collapse: collapse;
     width: 100%;
-`;
 
-const Tbody = styled.tbody`
-    :last-child {
+    tbody :last-child {
         border-bottom: none;
     }
-`;
 
-const Tr = styled.tr`
-    border-bottom: 1px solid #e4e4e7;
+    tr {
+        border-bottom: 1px solid ${borderColor};
 
-    :nth-child(1) {
-        text-align: left;
+        :nth-child(1) {
+            text-align: left;
+        }
+        :nth-child(2) {
+            text-align: right;
+        }
+
+        th {
+            color: #71717a;
+        }
+
+        th,
+        td {
+            padding: 0.5rem 0;
+        }
     }
-    :nth-child(2) {
-        text-align: right;
+
+    caption {
+        caption-side: bottom;
+        padding: 10px;
+        color: #52525b;
     }
-
-    th,
-    td {
-        padding: 0.5rem 0;
-    }
-`;
-
-const Caption = styled.caption`
-    caption-side: bottom;
-    padding: 10px;
-    color: #a1a1aa;
-`;
-
-const Title = styled.h1`
-    margin: 0.5rem 0;
 `;
