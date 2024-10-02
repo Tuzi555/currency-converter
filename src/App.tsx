@@ -3,21 +3,29 @@ import { CurrencyTable } from './components/currency-table';
 import { ExchangeForm } from './components/exchange-form';
 import { getExchangeRates } from './queries/exchange-rate';
 import { useQuery } from '@tanstack/react-query';
+import { ErrorMessage } from './components/error-page';
 
 export function App() {
-    const ratesQuery = useQuery({
+    const { status, data, error } = useQuery({
         queryKey: ['rates'],
         queryFn: getExchangeRates,
     });
 
-    if (!ratesQuery.data) {
+    if (status === 'pending') {
         return null;
     }
 
+    if (status === 'error') {
+        return (
+            <Main>
+                <ErrorMessage error={error} />
+            </Main>
+        );
+    }
     return (
         <Main>
-            <ExchangeForm exchangeRates={ratesQuery.data.exchangeRates} />
-            <CurrencyTable exchangeRatesData={ratesQuery.data} />
+            <ExchangeForm exchangeRates={data.exchangeRates} />
+            <CurrencyTable exchangeRatesData={data} />
         </Main>
     );
 }
