@@ -20,10 +20,6 @@ export function transformRates(input: string): ExchangeRatesData {
 
     return {
         date: dateParts[1],
-        exchangeRates: rates.sort((a, b) => {
-            if (a.currency < b.currency) return -1;
-            if (a.currency > b.currency) return 1;
-            return 0;
-        }),
+        exchangeRates: rates.sort((a, b) => (a.currency < b.currency ? -1 : 1)),
     };
 }

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { ExchangeRate } from '../types/exchange-rate';
 import { StyledContainer } from './ui/styled-container';
 import styled from 'styled-components';
+import { convertAmount } from '../utils/convertAmount';
 
 type ConvertedAmount = {
     inputAmount: number;
@@ -46,9 +47,11 @@ export function ExchangeForm({
             setConvertedAmount({
                 inputAmount: inputAmountNumber,
                 currency: currency.toString(),
-                convertedAmount:
-                    (inputAmountNumber / exchangeRate?.rate) *
-                    exchangeRate?.amount,
+                convertedAmount: convertAmount(
+                    inputAmountNumber,
+                    exchangeRate.rate,
+                    exchangeRate.amount
+                ),
             });
         }
     }
