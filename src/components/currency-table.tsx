@@ -46,7 +46,7 @@ const Table = styled.table`
         }
 
         tr:nth-of-type(even) {
-            background-color: #e4e4e7;
+            background-color: #e7e5e4;
         }
     }
 

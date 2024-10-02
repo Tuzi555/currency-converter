@@ -123,8 +123,8 @@ const StyledForm = styled.form`
     }
 
     button {
-        color: #f4f4f5;
-        background-color: #18181b;
+        color: #fafaf9;
+        background-color: #44403c;
         border: 0px;
         font-weight: bold;
         transition: 0.3s;
@@ -132,7 +132,7 @@ const StyledForm = styled.form`
     }
 
     button:hover {
-        background-color: #3f3f46;
+        background-color: #78716c;
     }
 
     .input-container {
