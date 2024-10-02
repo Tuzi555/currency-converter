@@ -4,7 +4,7 @@ export const StyledContainer = styled.div`
     border: 1px solid var(--border-gray);
     border-radius: 0.75rem;
     padding: 0 2rem;
-    width: 640px;
+    width: 40rem;
     box-sizing: border-box;
 
     h1,
@@ -13,11 +13,11 @@ export const StyledContainer = styled.div`
         text-align: center;
     }
 
-    @media only screen and (max-width: 768px) {
+    @media only screen and (max-width: 48rem) {
         width: 80%;
     }
 
-    @media only screen and (max-width: 640px) {
+    @media only screen and (max-width: 40rem) {
         width: 100%;
     }
 `;

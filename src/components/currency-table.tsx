@@ -36,8 +36,6 @@ export function CurrencyTable({
     );
 }
 
-const mutedTextColor = '#71717a';
-
 const Table = styled.table`
     border-collapse: collapse;
     width: 100%;
@@ -62,7 +60,7 @@ const Table = styled.table`
         }
 
         th {
-            color: ${mutedTextColor};
+            color: var(--text-muted);
         }
 
         th,
@@ -74,6 +72,6 @@ const Table = styled.table`
     caption {
         caption-side: bottom;
         padding: 1rem;
-        color: ${mutedTextColor};
+        color: var(--text-muted);
     }
 `;

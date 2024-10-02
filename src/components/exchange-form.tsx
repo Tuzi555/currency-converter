@@ -18,8 +18,6 @@ export function ExchangeForm({
         ConvertedAmount | undefined
     >(undefined);
 
-    console.log(convertedAmount);
-
     function handleConversion(e: React.FormEvent<HTMLFormElement>) {
         const form = e.target as HTMLFormElement;
         if (form.reportValidity()) {
@@ -59,7 +57,7 @@ export function ExchangeForm({
         <StyledContainer>
             <h1>CZK Converter</h1>
             <StyledForm onSubmit={handleConversion}>
-                <div>
+                <div className="input-container">
                     <label htmlFor="amount">CZK amount</label>
                     <input
                         id="amount"
@@ -70,8 +68,8 @@ export function ExchangeForm({
                         required
                     />
                 </div>
-                <div>
-                    <label htmlFor="currency">CZK amount</label>
+                <div className="input-container">
+                    <label htmlFor="currency">Currency</label>
                     <select id="currency" name="currency">
                         {exchangeRates.map((r) => (
                             <option key={r.currency} value={r.currency}>
@@ -84,8 +82,13 @@ export function ExchangeForm({
             </StyledForm>
             {convertedAmount ? (
                 <h2>
-                    {convertedAmount.inputAmount} CZK ={' '}
-                    {convertedAmount.convertedAmount.toFixed(2)}{' '}
+                    {convertedAmount.inputAmount.toLocaleString('cs-CZ', {
+                        style: 'decimal',
+                    })}{' '}
+                    CZK ={' '}
+                    {convertedAmount.convertedAmount.toLocaleString('cs-CZ', {
+                        style: 'decimal',
+                    })}{' '}
                     {convertedAmount.currency}
                 </h2>
             ) : (
@@ -97,4 +100,47 @@ export function ExchangeForm({
 
 const StyledForm = styled.form`
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    font-weight: 500;
+    gap: 1rem;
+
+    label {
+        margin-bottom: 0.25rem;
+        color: var(--text-muted);
+    }
+
+    select,
+    input,
+    button {
+        border-color: var(--border-gray);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 0.325rem;
+        box-sizing: border-box;
+        font-size: 1rem;
+        padding: 0 0.5rem;
+        height: 2rem;
+    }
+
+    button {
+        color: #f4f4f5;
+        background-color: #18181b;
+        border: 0px;
+        font-weight: bold;
+        transition: 0.3s;
+        align-self: end;
+    }
+
+    button:hover {
+        background-color: #3f3f46;
+    }
+
+    .input-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media only screen and (max-width: 48rem) {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
 `;
