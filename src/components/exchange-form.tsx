@@ -92,7 +92,7 @@ export function ExchangeForm({
                     {convertedAmount.currency}
                 </h2>
             ) : (
-                <h2>Fill in the form to see results.</h2>
+                <h2>Fill in the form to see the results.</h2>
             )}
         </StyledContainer>
     );
