@@ -24,7 +24,7 @@ export function CurrencyTable({
                 </thead>
                 <tbody>
                     {exchangeRatesData.exchangeRates.map((r) => (
-                        <tr key={r.currency}>
+                        <tr key={r.currency} data-testid="exchange-rate-row">
                             <td>{r.currency}</td>
                             <td>{r.amount}</td>
                             <td>{r.rate}</td>
