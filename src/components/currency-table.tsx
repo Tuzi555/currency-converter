@@ -9,7 +9,7 @@ export function CurrencyTable({
 }) {
     return (
         <StyledContainer>
-            <h1>CZK Exchange rates</h1>
+            <h2>CZK Exchange rates</h2>
             <Table>
                 <caption>
                     Latest exchange rates according to CNB (

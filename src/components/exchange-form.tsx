@@ -3,6 +3,7 @@ import { ExchangeRate } from '../types/exchange-rate';
 import { StyledContainer } from './ui/styled-container';
 import styled from 'styled-components';
 import { convertAmount } from '../utils/convertAmount';
+import { ArrowsIcon } from './ui/arrows';
 
 type ConvertedAmount = {
     inputAmount: number;
@@ -58,7 +59,7 @@ export function ExchangeForm({
 
     return (
         <StyledContainer data-testid="currency-converter">
-            <h1>CZK Converter</h1>
+            <h2>CZK Converter</h2>
             <StyledForm onSubmit={handleConversion}>
                 <div className="input-container">
                     <label htmlFor="amount">CZK amount</label>
@@ -84,16 +85,25 @@ export function ExchangeForm({
                 <button type="submit">Convert</button>
             </StyledForm>
             {convertedAmount ? (
-                <h2>
-                    {convertedAmount.inputAmount.toLocaleString('cs-CZ', {
-                        style: 'decimal',
-                    })}{' '}
-                    CZK ={' '}
-                    {convertedAmount.convertedAmount.toLocaleString('cs-CZ', {
-                        style: 'decimal',
-                    })}{' '}
-                    {convertedAmount.currency}
-                </h2>
+                <>
+                    <h2>
+                        {convertedAmount.inputAmount.toLocaleString('cs-CZ', {
+                            style: 'decimal',
+                        })}
+                        &nbsp; CZK
+                    </h2>
+                    <ArrowsIcon />
+                    <h1 className="conversion-result">
+                        {convertedAmount.convertedAmount.toLocaleString(
+                            'cs-CZ',
+                            {
+                                style: 'decimal',
+                            }
+                        )}
+                        &nbsp;
+                        {convertedAmount.currency}
+                    </h1>
+                </>
             ) : (
                 <h2>Fill in the form to see the results.</h2>
             )}
