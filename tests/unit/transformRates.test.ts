@@ -1,6 +1,6 @@
-import { ExchangeRatesData } from '../types/exchange-rates-data';
+import { ExchangeRatesData } from './../../src/types/exchange-rates-data';
 import { expect, test } from 'vitest';
-import { transformRates } from './transformRates';
+import { transformRates } from './../../src/utils/transformRates';
 
 test('should correctly transform exchange rates data', () => {
     const input = `02 Oct 2024 #192

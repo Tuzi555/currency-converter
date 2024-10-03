@@ -1,5 +1,5 @@
 import { expect, test } from 'vitest';
-import { convertAmount } from './convertAmount';
+import { convertAmount } from './../../src/utils/convertAmount';
 
 test('converts 100 units into 20 with the rate of 5', () => {
     expect(convertAmount(100, 5, 1)).toBe(20);

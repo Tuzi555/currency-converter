@@ -4,14 +4,18 @@ import { App } from './App.tsx';
 import './index.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorPage } from './components/error-page.tsx';
 
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <App />
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
+        <ErrorBoundary FallbackComponent={ErrorPage}>
+            <QueryClientProvider client={queryClient}>
+                <App />
+                <ReactQueryDevtools initialIsOpen={false} />
+            </QueryClientProvider>
+        </ErrorBoundary>
     </StrictMode>
 );

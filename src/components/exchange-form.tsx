@@ -57,7 +57,7 @@ export function ExchangeForm({
     }
 
     return (
-        <StyledContainer>
+        <StyledContainer data-testid="currency-converter">
             <h1>CZK Converter</h1>
             <StyledForm onSubmit={handleConversion}>
                 <div className="input-container">
