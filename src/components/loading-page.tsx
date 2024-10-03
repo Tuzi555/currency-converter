@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { DancingDots } from './ui/dancing-dots';
+import { Spinner } from './ui/spinner';
 
 export function LoadingPage() {
     return (
         <StyledDiv>
-            <DancingDots />
+            <Spinner />
         </StyledDiv>
     );
 }
