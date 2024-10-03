@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export function DancingDots() {
+export function Spinner() {
     return (
         <StyledSvg
             width="96"
